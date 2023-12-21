@@ -24,7 +24,6 @@ public class Main {
             }
         }
 
-        visited[0][0] = true;
         bfs();
 
         System.out.println(visited[n-1][m-1]? 1:0);
