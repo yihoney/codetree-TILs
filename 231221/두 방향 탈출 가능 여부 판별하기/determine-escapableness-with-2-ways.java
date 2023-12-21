@@ -3,8 +3,9 @@ import java.util.*;
 
 public class Main {
     static int n, m;
-    static int[][] graph, visited;
-    static int[][] dirs = new int [][]{ {0,1}, {1,0}};
+    static int[][] graph;
+    static boolean[][] visited;
+    static int[][] dirs = new int [][]{ {0,1}, {1,0}}; // 우, 하 두방향으로만 이동
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -12,7 +13,7 @@ public class Main {
         n = Integer.parseInt(st.nextToken());
         m = Integer.parseInt(st.nextToken());
 
-        visited = new int[n][m];
+        visited = new boolean[n][m];
         graph = new int[n][m];
 
         for(int i=0; i<n; i++) {
@@ -22,10 +23,10 @@ public class Main {
             }
         }
 
-        visited[0][0] = 1;
+        visited[0][0] = true;
         dfs(0, 0);   
 
-        System.out.println(visited[n-1][m-1]!=0?1:0);
+        System.out.println(visited[n-1][m-1]?1:0);
     }
 
     static void dfs(int x, int y) {
@@ -38,7 +39,7 @@ public class Main {
             int ny = y+dirs[d][1];
 
             if(canGo(nx, ny)) {
-                visited[nx][ny] = visited[x][y]++;
+                visited[nx][ny] = true;
                 dfs(nx, ny);
             }
         }
@@ -49,7 +50,7 @@ public class Main {
             return false;
         }
 
-        if(visited[x][y]==1 || graph[x][y]==0) { // 이미 방문했거나 뱀이 있다면
+        if(visited[x][y] || graph[x][y]==0) { // 이미 방문했거나 뱀이 있다면
             return false;
         }
 
