@@ -30,10 +30,6 @@ public class Main {
     }
 
     static void dfs(int x, int y) {
-        if(x==n-1 && y==m-1) {
-            return;
-        }
-
         for(int d=0; d<dirs.length; d++) {
             int nx = x+dirs[d][0];
             int ny = y+dirs[d][1];
