@@ -18,7 +18,7 @@ public class Main {
 
         for(int i=0; i<n; i++) {
             st = new StringTokenizer(br.readLine());
-            for(int j=0; j<n; j++) {
+            for(int j=0; j<m; j++) {
                 graph[i][j] = Integer.parseInt(st.nextToken());
             }
         }
@@ -30,6 +30,10 @@ public class Main {
     }
 
     static void dfs(int x, int y) {
+        if(x==n-1 && y==m-1) {
+            return;
+        }
+
         for(int d=0; d<dirs.length; d++) {
             int nx = x+dirs[d][0];
             int ny = y+dirs[d][1];
