@@ -74,7 +74,7 @@ public class Main {
             }
         }
 
-        System.out.println(ans[0]+" "+ans[1]);
+        System.out.println(cur[0]+" "+cur[1]);
     }
 
     static void bfs() {
